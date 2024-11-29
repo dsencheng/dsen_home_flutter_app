@@ -1,8 +1,9 @@
 import 'dart:math';
 
+import 'package:DsenHome/childWidget/waterfakk_flow.dart';
 import 'package:DsenHome/utils/random_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:waterfall_flow/waterfall_flow.dart';
 
 class LampPage extends StatefulWidget {
   const LampPage({super.key});
@@ -156,6 +157,38 @@ class _LampPageState extends State<LampPage> {
           ),
         ),
 
+        SliverPersistentHeader(
+          delegate: SliverHeaderDelegate(
+            maxHeight: 80,
+            minHeight: 50,
+            child: Container(
+              color: Colors.brown,
+              child: Center(
+                child: Text("瀑布流顶部吸顶3333"),
+              ),
+            ),
+          ),
+          pinned: true,
+        ),
+
+        SliverWaterfallFlow(
+          gridDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 5.0,
+            mainAxisSpacing: 5.0,
+          ),
+          delegate: SliverChildBuilderDelegate(
+            (BuildContext context, int index) {
+              return Container(
+                alignment: Alignment.center,
+                color: RandomUtils.getRandomColor,
+                height: RandomUtils.getRandomDouble(80) + 20,
+                child: Text('Item $index'),
+              );
+            },
+            // childCount: 40,
+          ),
+        ),
       ],
     );
   }
@@ -163,33 +196,6 @@ class _LampPageState extends State<LampPage> {
   double getRandomDouble() {
     Random random = Random();
     return random.nextDouble() * 100;
-  }
-
-  Widget _nestScrollView(BuildContext context) {
-    return NestedScrollView(
-      headerSliverBuilder: (context, innerBoxIsScrolled) {
-        return [
-          _test(context)
-        ];
-      },
-      body: 
-
-        MasonryGridView.count(
-          controller: _constroller,
-          shrinkWrap: true,
-          crossAxisCount: 2,
-          mainAxisSpacing: 2,
-          crossAxisSpacing: 4,
-          itemCount: 20,
-          itemBuilder: (context, index) {
-            return Container(
-              padding: EdgeInsets.all(5),
-              height: 50,
-              color: Colors.green,
-            );
-          },
-        ),
-    );
   }
 }
 
