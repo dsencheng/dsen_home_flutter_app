@@ -54,6 +54,15 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(
                     height: 20,
                   ),
+                  Container(
+                    height: 200,
+                    color: Colors.indigo,
+                    alignment: Alignment.center,
+                    child: Text("直播"),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   _movies(),
                 ],
               ),

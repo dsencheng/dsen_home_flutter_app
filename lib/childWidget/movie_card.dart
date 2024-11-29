@@ -14,7 +14,7 @@ class _MovieCardState extends State<MovieCard> {
   Widget build(BuildContext context) {
     return Container(
       color: RandomUtils.getRandomColor,
-      height: RandomUtils.getRandomDouble(100),
+      height: RandomUtils.getRandomDouble(100) + 30,
     );
   }
 }

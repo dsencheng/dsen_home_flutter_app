@@ -46,11 +46,11 @@ class _MainScreenState extends State<MainScreen> {
         items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: "首页",
+              label: "家",
               backgroundColor: Theme.of(context).colorf5),
           BottomNavigationBarItem(
-              icon: Icon(Icons.sync_alt),
-              label: "自动化",
+              icon: Icon(Icons.flutter_dash),
+              label: "短视频",
               backgroundColor: Theme.of(context).colorf5),
           BottomNavigationBarItem(
               icon: Icon(Icons.lightbulb),
