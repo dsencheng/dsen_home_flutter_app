@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils/random_utils.dart';
+
 class MovieCard extends StatefulWidget {
   const MovieCard({super.key});
 
@@ -10,6 +12,9 @@ class MovieCard extends StatefulWidget {
 class _MovieCardState extends State<MovieCard> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      color: RandomUtils.getRandomColor,
+      height: RandomUtils.getRandomDouble(100),
+    );
   }
 }

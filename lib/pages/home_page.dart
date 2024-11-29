@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../childWidget/movie_card.dart';
 import '../childWidget/music_card.dart';
 import '../extension/theme_extension.dart';
@@ -202,9 +203,15 @@ class _HomePageState extends State<HomePage> {
   Widget _movies() {
     return Container(
       height: 300,
-      color: Colors.pink,
-      margin: EdgeInsets.symmetric(horizontal: 10),
-      child: MovieCard(),
+      child: MasonryGridView.count(
+        crossAxisCount: 2,
+        mainAxisSpacing: 2,
+        crossAxisSpacing: 4,
+        itemCount: 20,
+        itemBuilder: (context, index) {
+          return MovieCard();
+        },
+      ),
     );
   }
 }
