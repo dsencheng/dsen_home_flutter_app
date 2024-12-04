@@ -3,6 +3,7 @@ import '../extension/theme_extension.dart';
 import '../pages/automation_page.dart';
 import '../pages/home_page.dart';
 import '../pages/lamp_page.dart';
+import 'pages/short_video_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +34,7 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIdx = 0;
   final List<Widget> _pages = [
     HomePage(),
-    AutomationPage(),
+    ShortVideoPage(),
     LampPage(),
   ];
 
