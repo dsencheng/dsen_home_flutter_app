@@ -14,14 +14,9 @@ class SliverSimpleHeaderDelegate extends SliverPersistentHeaderDelegate {
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    final double opacity = 1 - (shrinkOffset / (maxExtent - minExtent));
-    return Opacity(
-      opacity: opacity.clamp(0.0, 1.0),
-      child: Container(
-        color: Colors.blue.withOpacity(opacity.clamp(0.0, 1.0)),
-        child: builder(context, opacity),
-      ),
-    );
+    final double percentage = (shrinkOffset / (maxExtent - minExtent)).clamp(0, 1);
+    // print(percentage);
+    return SizedBox.expand(child: builder(context, percentage));
   }
 
   @override

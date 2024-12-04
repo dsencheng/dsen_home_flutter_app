@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../delegate/sliver_simple_header_delegate.dart';
+import 'personal/tab_indicator_widget.dart';
 
 class PersonalPage extends StatefulWidget {
   const PersonalPage({super.key});
@@ -35,24 +36,21 @@ class _PersonalPageState extends State<PersonalPage> {
               ],
             ),
           ),
-          SliverPadding(
-            padding: EdgeInsets.all(8)
-          ),
 
-          // SliverPersistentHeader(
-          //   delegate: SliverSimpleHeaderDelegate(
-          //     //有最大和最小高度
-          //     maxHeight: 200,
-          //     minHeight: 50,
-          //     builder: (context, percentage) {
-          //       return Container(
-          //         color: Colors.blue[1000 * percentage.toInt()],
-          //         child: Text("${percentage}"),
-          //       );
-          //     },
-          //   ),
-          //   pinned: true,
-          // ),
+          SliverPersistentHeader(
+            delegate: SliverSimpleHeaderDelegate(
+              //有最大和最小高度
+              maxHeight: 50,
+              minHeight: 50,
+              builder: (context, percentage) {
+                return Container(
+                  color: Colors.blue,
+                  child: TabIndicatorWidget(),
+                );
+              },
+            ),
+            pinned: true,
+          ),
 
           SliverList(
             delegate: SliverChildBuilderDelegate(
