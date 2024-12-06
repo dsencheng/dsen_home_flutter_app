@@ -3,6 +3,8 @@ import 'package:DsenHome/pages/personal_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'sliver_ramming.dart';
+
 class DemoList extends StatelessWidget {
   const DemoList({super.key});
 
@@ -25,7 +27,16 @@ class DemoList extends StatelessWidget {
         ),
         ListTile(
           title: Text('List Item 3'),
+          onTap: () {
+            Get.to(SliverFillRemainingExampleApp());
+          },
         ),
+        ListTile(
+          title: Text('个人主页布局2'),
+          onTap: () {
+            
+          },
+        )
       ],
     );
   }
