@@ -1,4 +1,5 @@
 import 'package:DsenHome/getxdemo/animation01.dart';
+import 'package:DsenHome/pages/chat_page.dart';
 import 'package:DsenHome/pages/personal_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,7 +37,13 @@ class DemoList extends StatelessWidget {
           onTap: () {
             
           },
-        )
+        ),
+        ListTile(
+          title: Text('ChatGPT'),
+          onTap: () {
+            Get.to(ChatPage());
+          },
+        ),
       ],
     );
   }

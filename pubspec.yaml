@@ -35,6 +35,12 @@ dependencies:
   video_player: ^2.9.2
   # 状态管理
   get: ^4.6.6
+  # 请求库
+  dio: ^5.7.0
+  # 加载动画
+  flutter_spinkit: ^5.2.1
+  # 文本动画
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:
