@@ -1,4 +1,6 @@
+import 'package:DsenHome/pages/lamp_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../childWidget/movie_card.dart';
 import '../childWidget/music_card.dart';
 import '../extension/theme_extension.dart';
@@ -12,6 +14,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Color _lampColor = Colors.orange;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,8 +154,14 @@ class _HomePageState extends State<HomePage> {
                     title: "灯光设备一",
                     iconName: "",
                     isActive: true,
-                    toggleDeviceState: () {
-                      print("toggle");
+                    foregroundColor: _lampColor,
+                    tapCardEvent: () async {
+                      final result = await Get.toNamed("/lamp", arguments: {"title": "灯光设备一","color": _lampColor});
+                      if (result != null && result is Map) {
+                        setState(() {
+                          _lampColor = result["color"];
+                        });
+                      }
                     },
                   ),
                 ),
@@ -164,9 +174,6 @@ class _HomePageState extends State<HomePage> {
                     title: "窗帘设备二",
                     iconName: "",
                     isActive: false,
-                    toggleDeviceState: () {
-                      print("toggle");
-                    },
                   ),
                 ),
                 SizedBox(
@@ -178,9 +185,6 @@ class _HomePageState extends State<HomePage> {
                     title: "清洁设备三",
                     iconName: "",
                     isActive: true,
-                    toggleDeviceState: () {
-                      print("toggle");
-                    },
                   ),
                 ),
                 SizedBox(
@@ -189,12 +193,9 @@ class _HomePageState extends State<HomePage> {
                 AspectRatio(
                   aspectRatio: 1,
                   child: DeviceCard(
-                    title: "清洁设备三",
+                    title: "其他设备四",
                     iconName: "",
                     isActive: false,
-                    toggleDeviceState: () {
-                      print("toggle");
-                    },
                   ),
                 ),
               ],

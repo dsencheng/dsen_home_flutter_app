@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
 import '../extension/theme_extension.dart';
 
-class DeviceCard extends StatelessWidget {
-  const DeviceCard(
+class DeviceCard extends StatefulWidget {
+  DeviceCard(
       {super.key,
-      required this.toggleDeviceState,
+      this.tapCardEvent,
       required this.title,
       required this.iconName,
-      required this.isActive});
+      required this.isActive,
+      this.foregroundColor = Colors.orange,});
   final String title;
   final String iconName;
-  final bool isActive;
-  final VoidCallback toggleDeviceState;
+  bool isActive;
+  VoidCallback? tapCardEvent;
+  Color foregroundColor;
 
+  @override
+  State<DeviceCard> createState() => _DeviceCardState();
+}
+
+class _DeviceCardState extends State<DeviceCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: widget.tapCardEvent,
       child: Container(
         // constraints: BoxConstraints(
         //   minWidth: 0,
@@ -26,7 +34,7 @@ class DeviceCard extends StatelessWidget {
         // height: 150,
         // width: 150,
         decoration: BoxDecoration(
-          color: isActive ? Colors.white : Colors.black,
+          color: widget.isActive ? Colors.white : Colors.black,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
@@ -43,34 +51,40 @@ class DeviceCard extends StatelessWidget {
           children: [
             Icon(
               Icons.light_mode,
-              color: isActive ? Colors.orange : Colors.white,
+              color: widget.isActive ? widget.foregroundColor : Colors.white,
               shadows: [
                 Shadow(
                   blurRadius: 30,
-                  color: Colors.orange.withOpacity(0.8),
+                  color: widget.foregroundColor.withOpacity(0.8),
                 )
               ],
             ),
             Text(
-              title,
+              widget.title,
               style: TextStyle(
                   fontSize: 18,
-                  color: isActive
+                  color: widget.isActive
                       ? Theme.of(context).largeTitleColor
                       : Colors.white),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  Icons.power_settings_new,
-                  color: isActive ? Colors.orange : Colors.white,
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      widget.isActive = !widget.isActive;
+                    });
+                  },
+                  icon: Icon(Icons.power_settings_new,
+                  color: widget.isActive ? widget.foregroundColor : Colors.white,
                   shadows: [
                     Shadow(
                       blurRadius: 30,
-                      color: Colors.orange.withOpacity(0.8),
+                      color: widget.foregroundColor.withOpacity(0.8),
                     )
-                  ],
+                  ],)
+                  
                 ),
               ],
             )
