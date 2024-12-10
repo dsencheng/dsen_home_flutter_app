@@ -32,9 +32,15 @@ class _LampPageState extends State<LampPage> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+     title = args?["title"] ?? "";
+    _lampColor = args?["color"] ?? Colors.white;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    title = args?["title"];
-    _lampColor = args?["color"];
+   
     _colorIndex = _colors.indexOf(_lampColor);
     return Scaffold(
       appBar: AppBar(

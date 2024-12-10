@@ -4,75 +4,83 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import '../extension/theme_extension.dart';
 import '../pages/home_page.dart';
 import '../pages/lamp_page.dart';
-import 'pages/short_video_page.dart';
+import 'pages/chat_page.dart';
+import 'pages/personal_page.dart';
+import 'pages/shop/shop_page.dart';
+import 'pages/shorts/short_video_page.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool _showTabBar = true;
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
-        useMaterial3: true,
+        // useMaterial3: true,
       ),
-      home: MainScreen(),
+      home: DefaultTabController(
+        length: 5,
+        child: Scaffold(
+          // appBar: AppBar(
+          //   leading: IconButton(onPressed: (){
+          //     setState(() {
+          //       _showTabBar = !_showTabBar;
+          //     });
+          //   }, icon: Icon(Icons.change_circle)),
+          // ),
+          body: const TabBarView(
+            children: [
+              HomePage(),
+              ShortVideoPage(),
+              ChatPage(),
+              ShopPage(),
+              PersonalPage(),
+            ],
+          ),
+          bottomNavigationBar: _showTabBar ? const SafeArea(
+            child: TabBar(
+              tabs: [
+                Tab(
+                  icon: Icon(Icons.home),
+                  // text: "Home",
+                ),
+                Tab(
+                  icon: Icon(Icons.subscriptions),
+                  // text: "Shorts",
+                ),
+                Tab(
+                  icon: Icon(Icons.chat),
+                  // text: "Chat",
+                ),
+                Tab(
+                  icon: Icon(Icons.shop),
+                  // text: "Shop",
+                ),
+                Tab(
+                  icon: Icon(Icons.person),
+                  // text: "Personal",
+                ),
+              ],
+            ),
+          ) : null,
+        ),
+      ),
       getPages: [
         GetPage(name: "/", page: () => HomePage()),
         GetPage(name: "/lamp", page: () => LampPage())
       ],
-    );
-  }
-}
-
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
-
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  int _currentIdx = 0;
-  final List<Widget> _pages = [
-    HomePage(),
-    ShortVideoPage(),
-    LampPage(),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xffff5f5f5),
-      body: _pages[_currentIdx],
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: "家",
-              backgroundColor: Theme.of(context).colorf5),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.flutter_dash),
-              label: "短视频",
-              backgroundColor: Theme.of(context).colorf5),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.lightbulb),
-              label: "灯光",
-              backgroundColor: Theme.of(context).colorf5),
-        ],
-        backgroundColor: Color(0xfff5f5f5),
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
-        currentIndex: _currentIdx,
-        onTap: (value) {
-          setState(() {
-            _currentIdx = value;
-          });
-        },
-      ),
     );
   }
 }

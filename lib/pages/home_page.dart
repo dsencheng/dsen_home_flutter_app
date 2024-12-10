@@ -1,6 +1,7 @@
 import 'package:DsenHome/pages/lamp_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../childWidget/movie_card.dart';
 import '../childWidget/music_card.dart';
 import '../extension/theme_extension.dart';
@@ -14,7 +15,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Color _lampColor = Colors.orange;
+  late Color _lampColor = Colors.orange;
+  final SharedPreferencesAsync prefs = SharedPreferencesAsync();
+
+  void _readData() async {
+    int? color = await prefs.getInt("lampColor");
+    if (color != null) {
+      print("读取数据成功");
+      setState(() {
+        _lampColor = Color(color);
+      });
+      }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _readData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -161,6 +179,7 @@ class _HomePageState extends State<HomePage> {
                         setState(() {
                           _lampColor = result["color"];
                         });
+                        prefs.setInt("lampColor", _lampColor.value);
                       }
                     },
                   ),

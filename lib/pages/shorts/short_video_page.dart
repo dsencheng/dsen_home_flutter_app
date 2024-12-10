@@ -1,5 +1,9 @@
-import 'package:DsenHome/childWidget/short_video_screen.dart';
+import 'package:DsenHome/data/video_data.dart';
+import 'package:DsenHome/pages/shorts/short_video_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'playlet_page.dart';
 
 class ShortVideoPage extends StatefulWidget {
   const ShortVideoPage({super.key});
@@ -21,16 +25,20 @@ class _ShortVideoPageState extends State<ShortVideoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        Get.to(PlayletPage());
+      }, child: Text("找剧"),),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       body: GestureDetector(
         child: Container(
             color: const Color.fromARGB(255, 184, 65, 65),
             child: PageView.builder(
                 // controller: _pageController,
                 scrollDirection: Axis.vertical,
-                itemCount: 10,
+                itemCount: videoList.length,
                 // itemExtent: MediaQuery.of(context).size.height - MediaQuery.of(context).padding.bottom,
                 itemBuilder: (BuildContext context, int index) {
-                  return ShortVideoScreen();
+                  return ShortVideoScreen(url: videoList[index],);
                 })),
       ),
     );

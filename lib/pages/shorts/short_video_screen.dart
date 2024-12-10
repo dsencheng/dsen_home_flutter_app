@@ -1,38 +1,48 @@
 import 'package:DsenHome/utils/random_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'short_video_info_widget.dart';
 import 'short_video_side_bar.dart';
+import 'video_share_controller.dart';
+import 'video_player_widget.dart';
 
 class ShortVideoScreen extends StatefulWidget {
-  const ShortVideoScreen({super.key});
+  final String url;
+
+  const ShortVideoScreen({super.key, required this.url});
 
   @override
   State<ShortVideoScreen> createState() => _ShortVideoScreenState();
 }
 
-class _ShortVideoScreenState extends State<ShortVideoScreen> with AutomaticKeepAliveClientMixin {
-  bool _isPlaying = false;
+class _ShortVideoScreenState extends State<ShortVideoScreen> {
+  final VideoShareController _videoController = Get.put(VideoShareController());
+
+
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return Container(
       child: Stack(
         children: [
           Container(
-            color: RandomUtils.getRandomColor,
+            color: Colors.black,//RandomUtils.getRandomColor,
+            child: VideoPlayerWidget(videoUrl: widget.url,),
+          ),
+          Positioned(
             child: Center(
               child: IconButton(
                 onPressed: (){
+                  print("播放状态");
+                  _videoController.changePlaying();
                   setState(() {
                     
-                  _isPlaying = !_isPlaying;
+                  
                   });
                 }, 
-                icon: _isPlaying ? Icon(Icons.play_circle_fill) : Icon(Icons.play_circle_outline),
+                icon: Obx(() => _videoController.isPlaying.value ? Icon(Icons.play_circle_fill) : Icon(Icons.pause_circle_filled)),
                 ),
-            ),
-          ),
+            ),),
           Positioned(
             child: ShortVideoSideBar(),
             right: 0,
@@ -44,7 +54,11 @@ class _ShortVideoScreenState extends State<ShortVideoScreen> with AutomaticKeepA
       ),
     );
   }
-  
+
   @override
-  bool get wantKeepAlive => true;
+  void dispose() {
+    print("短视频页面销毁了");
+    Get.delete<VideoShareController>();
+    super.dispose();
+  }
 }
