@@ -6,7 +6,7 @@ class WaterfallFlow extends StatelessWidget {
   final List<Widget> children;
   final int columnCount;
 
-  const WaterfallFlow({super.key, required this.children, required this.columnCount});
+  const WaterfallFlow({required this.children, required this.columnCount});
 
   @override
   Widget build(BuildContext context) {

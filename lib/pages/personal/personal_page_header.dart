@@ -32,7 +32,7 @@ class _PersonalPageHeaderState extends State<PersonalPageHeader> {
           ),
           Column(
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 100,
               ),
               // Image.asset("images/background.png", fit: BoxFit.fill,height: 100, width: MediaQuery.of(context).size.width),
@@ -41,7 +41,7 @@ class _PersonalPageHeaderState extends State<PersonalPageHeader> {
                 child: Center(
                   child: CircleAvatar(
                     radius: (radius * _persentage()).clamp(20, radius),
-                    foregroundImage: const AssetImage(
+                    foregroundImage: AssetImage(
                       "images/storm.png",
                     ),
                   ),
@@ -65,7 +65,7 @@ class _PersonalPageHeaderState extends State<PersonalPageHeader> {
                         shadows: _shadows,
                       ),
                     ),
-                    IconButton(onPressed: () {}, icon: const Icon(Icons.verified)),
+                    IconButton(onPressed: () {}, icon: Icon(Icons.verified)),
                   ],
                 ),
               ),
@@ -90,7 +90,7 @@ class _PersonalPageHeaderState extends State<PersonalPageHeader> {
                       style: TextStyle(color: Colors.white,
                       shadows: _shadows,),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       width: 10,
                     ),
                     Text(
@@ -98,7 +98,7 @@ class _PersonalPageHeaderState extends State<PersonalPageHeader> {
                       style: TextStyle(color: Colors.white,
                       shadows: _shadows,),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       width: 10,
                     ),
                     Text(
@@ -119,7 +119,7 @@ class _PersonalPageHeaderState extends State<PersonalPageHeader> {
                       onPressed: () {
                         Get.back();
                       },
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_ios,
                         color: Colors.white,
                       ))

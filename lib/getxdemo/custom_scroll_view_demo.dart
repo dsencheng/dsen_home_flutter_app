@@ -36,7 +36,7 @@ Widget _test(BuildContext context) {
           padding: const EdgeInsets.all(8.0),
           sliver: SliverGrid(
             //Grid
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, //Grid按两列显示
               mainAxisSpacing: 10.0,
               crossAxisSpacing: 10.0,
@@ -63,7 +63,7 @@ Widget _test(BuildContext context) {
             minHeight: 50,
             child: Container(
               color: Colors.green,
-              child: const Center(
+              child: Center(
                 child: Text("吸顶1111"),
               ),
             ),
@@ -77,7 +77,7 @@ Widget _test(BuildContext context) {
             child: SizedBox(
               height: 300,
               child: PageView(
-                children: const [Text("水平滑动1111"), Text("水平滑动2222")],
+                children: [Text("水平滑动1111"), Text("水平滑动2222")],
               ),
             ),
           ),
@@ -89,7 +89,7 @@ Widget _test(BuildContext context) {
             height: 50,
             child: Container(
               color: Colors.brown,
-              child: const Center(
+              child: Center(
                 child: Text("吸顶222"),
               ),
             ),
@@ -111,7 +111,7 @@ Widget _test(BuildContext context) {
             childCount:
                 20, // Adjust this to the number of items you want to display
           ),
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 200.0,
             mainAxisSpacing: 10.0,
             crossAxisSpacing: 10.0,
@@ -126,7 +126,7 @@ Widget _test(BuildContext context) {
             minHeight: 50,
             child: Container(
               color: Colors.brown,
-              child: const Center(
+              child: Center(
                 child: Text("不吸顶222"),
               ),
             ),
@@ -156,7 +156,7 @@ Widget _test(BuildContext context) {
             minHeight: 50,
             child: Container(
               color: Colors.brown,
-              child: const Center(
+              child: Center(
                 child: Text("瀑布流顶部吸顶3333"),
               ),
             ),
@@ -165,7 +165,7 @@ Widget _test(BuildContext context) {
         ),
 
         SliverWaterfallFlow(
-          gridDelegate: const SliverWaterfallFlowDelegateWithFixedCrossAxisCount(
+          gridDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 5.0,
             mainAxisSpacing: 5.0,

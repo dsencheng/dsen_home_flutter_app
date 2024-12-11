@@ -30,25 +30,25 @@ class _TabIndicatorWidgetState extends State<TabIndicatorWidget> {
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Spacer(),
+            Spacer(),
             TextButton(
               key: _tabKeys[0],
-              child: const Text("作品"),
+              child: Text("作品"),
               onPressed: () => _onTap(0),
             ),
-            const Spacer(),
+            Spacer(),
             TextButton(
               key: _tabKeys[1],
-              child: const Text("动态"),
+              child: Text("动态"),
               onPressed: () => _onTap(1),
             ),
-            const Spacer(),
+            Spacer(),
             TextButton(
               key: _tabKeys[2],
-              child: const Text("资料"),
+              child: Text("资料"),
               onPressed: () => _onTap(2),
             ),
-            const Spacer()
+            Spacer()
           ],
         ),
         Positioned(
@@ -58,13 +58,13 @@ class _TabIndicatorWidgetState extends State<TabIndicatorWidget> {
           child: 
           AnimatedPositioned(
               left: _indicatorLeft,
-              curve: Curves.bounceInOut,
-              duration: const Duration(milliseconds: 300),
               child: Container(
                 height: 4,
                 width: 20,
                 color: Colors.red,
-              )),
+              ),
+              curve: Curves.bounceInOut,
+              duration: Duration(milliseconds: 300)),
           
         )
       ],

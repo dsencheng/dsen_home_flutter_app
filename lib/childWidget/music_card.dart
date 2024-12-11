@@ -10,8 +10,8 @@ class MusicCard extends StatefulWidget {
 class _MusicCardState extends State<MusicCard> {
   double _volume = 50;
   double _progress = 30;
-  final String _time = "00:00";
-  final String _totalTime = "00:00";
+  String _time = "00:00";
+  String _totalTime = "00:00";
   bool _isPlaying = false;
 
   @override
@@ -83,66 +83,8 @@ class _MusicCardState extends State<MusicCard> {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: const Offset(0, 3),
+            offset: Offset(0, 3),
           ),
-        ],
-      ),
-      child: Column(
-        children: [
-          //封面、进度、标题、控制
-          Row(
-            children: [
-              SizedBox(
-                width: 10,
-              ),
-              //封面
-              Expanded(
-                flex: 3,
-                child: AspectRatio(
-                    aspectRatio: 1,
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.asset("images/music_cover.png"))),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              // 进度、控制
-              Expanded(
-                  flex: 7,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: [
-                          Text("歌曲名",
-                              style: TextStyle(color: Colors.black, fontSize: 20)),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text("歌手",
-                              style:
-                                  TextStyle(color: Colors.grey[500], fontSize: 14)),
-                        ],
-                      ),
-                      _musicProgress(),
-                      _playControl(),
-                      SizedBox(
-                        height: 10,
-                      ),
-                    ],
-                  )),
-              SizedBox(
-                width: 10,
-              ),
-            ],
-          ),
-          //音量
-          _volumeControl(),
         ],
       ),
     );
@@ -154,7 +96,7 @@ class _MusicCardState extends State<MusicCard> {
       children: [
         Text(
           _time,
-          style: const TextStyle(color: Colors.grey, fontSize: 12),
+          style: TextStyle(color: Colors.grey, fontSize: 12),
         ),
         
         Expanded(
@@ -172,7 +114,7 @@ class _MusicCardState extends State<MusicCard> {
           ),
         ),
         
-        Text(_totalTime, style: const TextStyle(color: Colors.grey, fontSize: 12)),
+        Text(_totalTime, style: TextStyle(color: Colors.grey, fontSize: 12)),
       ],
     );
   }
@@ -185,12 +127,12 @@ class _MusicCardState extends State<MusicCard> {
           onPressed: () {
             print("上一首");
           },
-          icon: const Icon(
+          icon: Icon(
             Icons.skip_previous,
             color: Colors.grey,
           ),
         ),
-        const SizedBox(
+        SizedBox(
           width: 20,
         ),
         Container(
@@ -207,24 +149,24 @@ class _MusicCardState extends State<MusicCard> {
               });
             },
             icon: _isPlaying
-                ? const Icon(
+                ? Icon(
                     Icons.pause,
                     color: Colors.grey,
                   )
-                : const Icon(
+                : Icon(
                     Icons.play_arrow,
                     color: Colors.black,
                   ),
           ),
         ),
-        const SizedBox(
+        SizedBox(
           width: 20,
         ),
         IconButton(
           onPressed: () {
             print("下一首");
           },
-          icon: const Icon(
+          icon: Icon(
             Icons.skip_next,
             color: Colors.grey,
           ),
@@ -237,7 +179,7 @@ class _MusicCardState extends State<MusicCard> {
     return Row(
       children: [
         IconButton(
-          icon: const Icon(Icons.volume_down),
+          icon: Icon(Icons.volume_down),
           color: Colors.grey,
           highlightColor: Colors.black,
           onPressed: () {
@@ -262,7 +204,7 @@ class _MusicCardState extends State<MusicCard> {
           ),
         ),
         IconButton(
-          icon: const Icon(Icons.volume_up),
+          icon: Icon(Icons.volume_up),
           color: Colors.grey,
           highlightColor: Colors.black,
           onPressed: () {

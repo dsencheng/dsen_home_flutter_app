@@ -20,7 +20,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final bool _showTabBar = true;
+  bool _showTabBar = true;
 
   @override
   Widget build(BuildContext context) {

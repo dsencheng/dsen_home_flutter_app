@@ -13,7 +13,7 @@ class _AutomationPageState extends State<AutomationPage> {
     return Scaffold(
       body: Container(
         color: Colors.green,
-        child: const Center(child: Text("自动化")),
+        child: Center(child: Text("自动化")),
       ),
     );
   }
