@@ -14,7 +14,7 @@ class _PersonnalWidgetState extends State<PersonnalWidget> {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        SliverAppBar(
+        const SliverAppBar(
           pinned: true,
           expandedHeight: 200,
           flexibleSpace: FlexibleSpaceBar(
@@ -36,7 +36,7 @@ class _PersonnalWidgetState extends State<PersonnalWidget> {
             childCount:
                 20, // Adjust this to the number of items you want to display
           ),
-          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 200.0,
             mainAxisSpacing: 10.0,
             crossAxisSpacing: 10.0,

@@ -26,8 +26,8 @@ class _ShortVideoPageState extends State<ShortVideoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: (){
-        Get.to(PlayletPage());
-      }, child: Text("找剧"),),
+        Get.to(const PlayletPage());
+      }, child: const Text("找剧"),),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       body: Container(
           color: Colors.black,

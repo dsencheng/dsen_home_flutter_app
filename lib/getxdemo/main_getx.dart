@@ -7,7 +7,7 @@ void main(List<String> args) {
   runApp(GetMaterialApp(
     home: Scaffold(
       appBar: AppBar(
-        title: Text("GetX"),
+        title: const Text("GetX"),
       ),
       body: const DemoList(),
     ),

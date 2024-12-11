@@ -22,7 +22,7 @@ class SliverFillRemainingExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _tabs = <String>['猜你喜欢', '今日特价', '发现更多'];
+    final tabs = <String>['猜你喜欢', '今日特价', '发现更多'];
     // 构建 tabBar
     return Container();
   }

@@ -14,34 +14,34 @@ class DemoList extends StatelessWidget {
     return ListView(
       children: [
         ListTile(
-          title: Text('简单动画'),
+          title: const Text('简单动画'),
           onTap: () {
-            Get.to(Animation01());
+            Get.to(const Animation01());
           },
         ),
         ListTile(
-          title: Text('个人主页'),
+          title: const Text('个人主页'),
           onTap: () {
             // Get.to(PersonalPage());
-            Navigator.push(context, MaterialPageRoute(builder: (context) => PersonalPage()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const PersonalPage()));
           },
         ),
         ListTile(
-          title: Text('List Item 3'),
+          title: const Text('List Item 3'),
           onTap: () {
-            Get.to(SliverFillRemainingExampleApp());
+            Get.to(const SliverFillRemainingExampleApp());
           },
         ),
         ListTile(
-          title: Text('个人主页布局2'),
+          title: const Text('个人主页布局2'),
           onTap: () {
             
           },
         ),
         ListTile(
-          title: Text('ChatGPT'),
+          title: const Text('ChatGPT'),
           onTap: () {
-            Get.to(ChatPage());
+            Get.to(const ChatPage());
           },
         ),
       ],

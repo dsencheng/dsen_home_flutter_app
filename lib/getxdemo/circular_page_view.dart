@@ -5,11 +5,13 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Circular PageView')),
+        appBar: AppBar(title: const Text('Circular PageView')),
         body: CircularPageView(),
       ),
     );
@@ -17,6 +19,8 @@ class MyApp extends StatelessWidget {
 }
 
 class CircularPageView extends StatefulWidget {
+  const CircularPageView({super.key});
+
   @override
   _CircularPageViewState createState() => _CircularPageViewState();
 }
@@ -68,7 +72,7 @@ class _CircularPageViewState extends State<CircularPageView> {
     return Center(
       child: Text(
         title,
-        style: TextStyle(fontSize: 24),
+        style: const TextStyle(fontSize: 24),
       ),
     );
   }

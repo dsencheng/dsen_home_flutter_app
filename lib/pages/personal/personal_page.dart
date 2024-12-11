@@ -17,13 +17,13 @@ class PersonalPage extends StatefulWidget {
 
 class _PersonalPageState extends State<PersonalPage> {
   final _tabs = <String>['作品', '关注', '喜欢'];
-  double _headerHeight = 300.0;
+  final double _headerHeight = 300.0;
   double _tabbarOffset = 0.0;
   double _headerOffset = 0.0;
   bool _showBack = false;
   double safeAreaTop = 0;
 
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
@@ -151,7 +151,7 @@ class _PersonalPageState extends State<PersonalPage> {
   Widget buildSliverList(int count, String name) {
     return SliverGrid(
       //Grid
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2, //Grid按两列显示
         mainAxisSpacing: 10.0,
         crossAxisSpacing: 10.0,
