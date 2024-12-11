@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
+import '../../data/chat_data.dart';
+
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
 
@@ -31,10 +33,12 @@ class _ChatPageState extends State<ChatPage> {
           children: [
             Flexible(
               child: ListView.builder(
-                  itemBuilder: (BuildContext context, int index) {
-                    return Text("$index");
-                  },
-                  itemCount: 10),
+                itemBuilder: (BuildContext context, int index) {
+                  Map<String, String> map = chat_list[index];
+                  return buildChatItem(map['message']!, map['user']! == "A");
+                },
+                itemCount: chat_list.length,
+              ),
             ),
             if (isLoading) ...[
               const SpinKitThreeBounce(
@@ -66,6 +70,32 @@ class _ChatPageState extends State<ChatPage> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget buildChatItem(String message, bool isMe) {
+    return Row(
+      mainAxisAlignment: isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
+      children: [
+        Expanded(
+          child: Container(
+            margin: EdgeInsets.only(
+                left: isMe ? 40 : 10,
+                right: isMe ? 10 : 40,
+                top: 10,
+                bottom: 10),
+            padding: EdgeInsets.all(8),
+            decoration: BoxDecoration(
+                color: isMe ? Colors.grey[200] : Colors.blue[200],
+                borderRadius: BorderRadius.circular(10)),
+            child:  Text(
+              message,
+              style: const TextStyle(fontSize: 14),
+              maxLines: null,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

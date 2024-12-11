@@ -1,5 +1,5 @@
 import 'package:DsenHome/getxdemo/animation01.dart';
-import 'package:DsenHome/pages/chat_page.dart';
+import 'package:DsenHome/pages/chat/chat_page.dart';
 import 'package:DsenHome/pages/personal/personal_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import '../pages/home_page.dart';
-import 'pages/chat_page.dart';
+import 'pages/chat/chat_page.dart';
 import 'pages/personal/personal_page.dart';
 import 'pages/shop/shop_page.dart';
 import 'pages/shorts/short_video_page.dart';
