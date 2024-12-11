@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import '../extension/theme_extension.dart';
 import '../pages/home_page.dart';
-import '../pages/lamp_page.dart';
 import 'pages/chat_page.dart';
-import 'pages/personal_page.dart';
+import 'pages/personal/personal_page.dart';
 import 'pages/shop/shop_page.dart';
 import 'pages/shorts/short_video_page.dart';
+import 'routes/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,7 +35,7 @@ class _MyAppState extends State<MyApp> {
           // appBar: AppBar(
           //   leading: IconButton(onPressed: (){
           //     setState(() {
-          //       _showTabBar = !_showTabBar;
+          //       _showTabBar = !_showTabBar;【
           //     });
           //   }, icon: Icon(Icons.change_circle)),
           // ),
@@ -77,10 +76,8 @@ class _MyAppState extends State<MyApp> {
           ) : null,
         ),
       ),
-      getPages: [
-        GetPage(name: "/", page: () => HomePage()),
-        GetPage(name: "/lamp", page: () => LampPage())
-      ],
+      initialRoute: "/",
+      getPages: RoutePages,
     );
   }
 }

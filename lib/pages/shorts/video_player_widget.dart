@@ -15,7 +15,7 @@ class VideoPlayerWidget extends StatefulWidget {
 
 class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   late VideoPlayerController _controller;
-  final VideoShareController _videoShareController =  Get.find();
+  late VideoShareController _videoShareController;
 
   @override
   void initState() {
@@ -26,7 +26,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
         setState(() {});
       });
-
+      _videoShareController =  Get.find();
       _videoShareController.isPlaying.listen((p) {
         print("收到状态变化");
         if(p){

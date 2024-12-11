@@ -1,11 +1,12 @@
 import 'package:DsenHome/pages/personal/personal_page_header.dart';
 import 'package:DsenHome/utils/random_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import '../delegate/sliver_simple_header_delegate.dart';
-import '../delegate/sliver_tabbar_delegate.dart';
-import 'personal/personal_header_tabbar.dart';
-import 'personal/tab_indicator_widget.dart';
+import '../../delegate/sliver_simple_header_delegate.dart';
+import '../../delegate/sliver_tabbar_delegate.dart';
+import 'personal_header_tabbar.dart';
+import 'tab_indicator_widget.dart';
 
 class PersonalPage extends StatefulWidget {
   const PersonalPage({super.key});
@@ -16,20 +17,30 @@ class PersonalPage extends StatefulWidget {
 
 class _PersonalPageState extends State<PersonalPage> {
   final _tabs = <String>['作品', '关注', '喜欢'];
-  double _appBarHeight = 200.0;
-  double _currentExtent = 0.0;
+  double _headerHeight = 300.0;
+  double _tabbarOffset = 0.0;
+  double _headerOffset = 0.0;
+  bool _showBack = false;
+  double safeAreaTop = 0;
 
   ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
+    Map<String,dynamic> args = Get.arguments ?? {};
+    if (args.containsKey("showNavigationBar")) {
+      _showBack = args["showNavigationBar"];
+    }
     _scrollController.addListener(() {
-      print("偏移量${_scrollController.offset}");
-      double offset = _scrollController.offset.clamp(0, 200);
-      setState(() {
-        _currentExtent = offset;
-      });
+      _headerOffset =  _headerHeight - _scrollController.offset;
+      // print("_headerOffset：${_headerOffset}");
+      // offset 上滑增加，下滑减少
+      if (_headerOffset <= safeAreaTop) {
+        _tabbarOffset = (safeAreaTop - _headerOffset).clamp(0, safeAreaTop);
+        // print("_currentExtent:${_tabbarOffset}");
+      }
+      setState(() {});
     });
   }
 
@@ -44,6 +55,8 @@ class _PersonalPageState extends State<PersonalPage> {
   }
 
   Widget _body() {
+    safeAreaTop = MediaQuery.of(context).padding.top;
+    var tabbar = TabBar(tabs: _tabs.map((String name) => Tab(text: name)).toList(),);
     return SafeArea(
       top: false,
       child: NestedScrollView(
@@ -67,8 +80,11 @@ class _PersonalPageState extends State<PersonalPage> {
               child: Container(
                 color: Colors.amber,
                 child: SizedBox(
-                  height: 300,
-                  child: PersonalPageHeader(maxExtent: 300),
+                  height: _headerHeight,
+                  child: PersonalPageHeader(
+                    maxExtent: _headerHeight, 
+                    offset: _headerOffset,
+                    back: _showBack,),
                 ),
               ),
             ),
@@ -97,9 +113,10 @@ class _PersonalPageState extends State<PersonalPage> {
               handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
               sliver: SliverPersistentHeader(
                 delegate: SliverTabbarDelegate(
-                  child: TabBar(
-                    tabs: _tabs.map((String name) => Tab(text: name)).toList(),
-                  ),
+                  child: tabbar,
+                  offset: _tabbarOffset,
+                  minHeight: 48,
+                  maxHeight: 48+62,
                 ),
                 pinned: true, // 使 TabBar 固定在顶部
               ),

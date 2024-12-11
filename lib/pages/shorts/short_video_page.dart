@@ -29,18 +29,16 @@ class _ShortVideoPageState extends State<ShortVideoPage> {
         Get.to(PlayletPage());
       }, child: Text("找剧"),),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
-      body: GestureDetector(
-        child: Container(
-            color: const Color.fromARGB(255, 184, 65, 65),
-            child: PageView.builder(
-                // controller: _pageController,
-                scrollDirection: Axis.vertical,
-                itemCount: videoList.length,
-                // itemExtent: MediaQuery.of(context).size.height - MediaQuery.of(context).padding.bottom,
-                itemBuilder: (BuildContext context, int index) {
-                  return ShortVideoScreen(url: videoList[index],);
-                })),
-      ),
+      body: Container(
+          color: Colors.black,
+          child: PageView.builder(
+              // controller: _pageController,
+              scrollDirection: Axis.vertical,
+              itemCount: videoList.length,
+              // itemExtent: MediaQuery.of(context).size.height - MediaQuery.of(context).padding.bottom,
+              itemBuilder: (BuildContext context, int index) {
+                return ShortVideoScreen(url: videoList[index],);
+              })),
     );
   }
 

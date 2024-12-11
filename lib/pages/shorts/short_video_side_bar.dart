@@ -12,6 +12,7 @@ class _ShortVideoSideBarState extends State<ShortVideoSideBar> {
   bool _icon01Active = false;
 
   bool _icon03Active = false;
+  bool _addHiden = false;
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +29,14 @@ class _ShortVideoSideBarState extends State<ShortVideoSideBar> {
               top: 45,
               left: 0,
               right: 0,
-              child: _buildFocusButton())
+              child: _addHiden ? Container() : _buildFocusButton())
           ],),
           
           MyIconButton(
             icon: _icon01Active
                 ? const Icon(Icons.favorite, color: Colors.pink,)
-                : const Icon(Icons.favorite_border),
-            title: const Text("432"),
+                : const Icon(Icons.favorite_border, color: Colors.white,),
+            title: const Text("432", style: TextStyle(color: Colors.white,),),
             onTap: () {
               setState(() {
                 _icon01Active = !_icon01Active;
@@ -46,8 +47,8 @@ class _ShortVideoSideBarState extends State<ShortVideoSideBar> {
             height: 10,
           ),
           MyIconButton(
-            icon: const Icon(Icons.sms),
-            title: const Text("45"),
+            icon: const Icon(Icons.sms, color: Colors.white,),
+            title: const Text("45", style: TextStyle(color: Colors.white,),),
             onTap: () {},
           ),
           
@@ -56,9 +57,9 @@ class _ShortVideoSideBarState extends State<ShortVideoSideBar> {
           ),
           MyIconButton(
             icon: _icon03Active
-                ? const Icon(Icons.star)
-                : const Icon(Icons.star_border),
-            title: const Text("6"),
+                ? const Icon(Icons.star, color: Colors.orange,)
+                : const Icon(Icons.star_border, color: Colors.white,),
+            title: const Text("6", style: TextStyle(color: Colors.white,),),
             onTap: () {
               setState(() {
                 _icon03Active = !_icon03Active;
@@ -70,7 +71,7 @@ class _ShortVideoSideBarState extends State<ShortVideoSideBar> {
             height: 10,
           ),
           MyIconButton(
-            icon: const Icon(Icons.share),
+            icon: const Icon(Icons.share, color: Colors.white,),
             onTap: () {},
           ),
           const SizedBox(
@@ -93,7 +94,7 @@ class _ShortVideoSideBarState extends State<ShortVideoSideBar> {
       child: 
       GestureDetector(
         onTap: () {
-          print("点击头像");
+          Get.toNamed('/personal', arguments: {"showNavigationBar":true});
         },
         child: const CircleAvatar(
               radius: 30.0, // 头像半径
@@ -115,7 +116,9 @@ class _ShortVideoSideBarState extends State<ShortVideoSideBar> {
       child: 
       GestureDetector(
         onTap: () {
-          print("点击加号");
+          setState(() {
+            _addHiden = !_addHiden;
+          });
         },
         child: 
         const Center(
