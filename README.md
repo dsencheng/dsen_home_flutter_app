@@ -2,10 +2,18 @@
 
 A new Flutter module project.
 
-## Getting Started
+1.仿抖音首页
+2.仿AI聊天
+3.支持播放音乐、直播
 
-For help getting started with Flutter development, view the online
-[documentation](https://flutter.dev/).
 
-For instructions integrating Flutter modules to your existing applications,
-see the [add-to-app documentation](https://flutter.dev/to/add-to-app).
+iOS运行前，在`info.plist`添加权限。
+```
+<key>NSMicrophoneUsageDescription</key>
+<string>播放音乐用了麦克风权限</string>
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+</dict>
+```
