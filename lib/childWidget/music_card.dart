@@ -72,7 +72,7 @@ class _MusicCardState extends State<MusicCard> {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
@@ -81,7 +81,7 @@ class _MusicCardState extends State<MusicCard> {
           //封面、进度、标题、控制
           Row(
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               //封面
@@ -93,7 +93,7 @@ class _MusicCardState extends State<MusicCard> {
                         borderRadius: BorderRadius.circular(12),
                         child: Image.asset("images/music_cover.png"))),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               // 进度、控制
@@ -102,14 +102,14 @@ class _MusicCardState extends State<MusicCard> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
                           Text(_name,
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20)),
+                                  const TextStyle(color: Colors.black, fontSize: 20)),
                         ],
                       ),
                       Row(
@@ -121,12 +121,12 @@ class _MusicCardState extends State<MusicCard> {
                       ),
                       _musicProgress(),
                       _playControl(),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                     ],
                   )),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
             ],
@@ -144,7 +144,7 @@ class _MusicCardState extends State<MusicCard> {
       children: [
         Text(
           _time,
-          style: TextStyle(color: Colors.grey, fontSize: 12),
+          style: const TextStyle(color: Colors.grey, fontSize: 12),
         ),
         Expanded(
           child: Slider(
@@ -159,7 +159,7 @@ class _MusicCardState extends State<MusicCard> {
             allowedInteraction: SliderInteraction.slideOnly,
           ),
         ),
-        Text(_totalTime, style: TextStyle(color: Colors.grey, fontSize: 12)),
+        Text(_totalTime, style: const TextStyle(color: Colors.grey, fontSize: 12)),
       ],
     );
   }
@@ -173,12 +173,12 @@ class _MusicCardState extends State<MusicCard> {
             print("上一首");
             _play(AudioAction.Previous);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.skip_previous,
             color: Colors.grey,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 20,
         ),
         Container(
@@ -196,17 +196,17 @@ class _MusicCardState extends State<MusicCard> {
               _play(_isPlaying ? AudioAction.Play : AudioAction.Paused);
             },
             icon: _isPlaying
-                ? Icon(
+                ? const Icon(
                     Icons.pause,
                     color: Colors.grey,
                   )
-                : Icon(
+                : const Icon(
                     Icons.play_arrow,
                     color: Colors.black,
                   ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 20,
         ),
         IconButton(
@@ -214,7 +214,7 @@ class _MusicCardState extends State<MusicCard> {
             print("下一首");
             _play(AudioAction.Next);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.skip_next,
             color: Colors.grey,
           ),
@@ -227,7 +227,7 @@ class _MusicCardState extends State<MusicCard> {
     return Row(
       children: [
         IconButton(
-          icon: Icon(Icons.volume_down),
+          icon: const Icon(Icons.volume_down),
           color: Colors.grey,
           highlightColor: Colors.black,
           onPressed: () {
@@ -254,7 +254,7 @@ class _MusicCardState extends State<MusicCard> {
           ),
         ),
         IconButton(
-          icon: Icon(Icons.volume_up),
+          icon: const Icon(Icons.volume_up),
           color: Colors.grey,
           highlightColor: Colors.black,
           onPressed: () {

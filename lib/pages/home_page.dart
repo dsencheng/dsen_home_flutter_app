@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
             delegate: _SliverAppBarDelegate(
                 child: (double scale) {
                   return Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     color: Theme.of(context).colorf5,
                     child: _header(scale),
                   );
@@ -62,26 +62,26 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
                     child: _room()),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   _devices(),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   _music(),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
                     height: 200,
                     color: Colors.indigo,
                     alignment: Alignment.center,
-                    child: Text("直播"),
+                    child: const Text("直播"),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   _movies(),
@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         //裁成圆形
-        CircleAvatar(
+        const CircleAvatar(
           radius: 30,
           backgroundImage: AssetImage("images/storm.png"),
         ),
@@ -132,8 +132,12 @@ class _HomePageState extends State<HomePage> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           height: 30,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -148,12 +152,8 @@ class _HomePageState extends State<HomePage> {
               Icon(Icons.arrow_drop_down),
             ],
           ),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-          ),
         ),
-        Icon(Icons.search),
+        const Icon(Icons.search),
       ],
     );
   }
@@ -161,7 +161,7 @@ class _HomePageState extends State<HomePage> {
   Widget _devices() {
     return Container(
         height: 120,
-        margin: EdgeInsets.symmetric(horizontal: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 10),
         child: ListView(
               clipBehavior: Clip.none,
               scrollDirection: Axis.horizontal,
@@ -184,7 +184,7 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 AspectRatio(
@@ -195,7 +195,7 @@ class _HomePageState extends State<HomePage> {
                     isActive: false,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 AspectRatio(
@@ -206,7 +206,7 @@ class _HomePageState extends State<HomePage> {
                     isActive: true,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 AspectRatio(
@@ -224,8 +224,8 @@ class _HomePageState extends State<HomePage> {
 
   Widget _music() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10),
-      child: MusicCard());
+      margin: const EdgeInsets.symmetric(horizontal: 10),
+      child: const MusicCard());
   }
 
   Widget _movies() {

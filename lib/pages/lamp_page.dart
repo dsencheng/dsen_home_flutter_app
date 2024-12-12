@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:waterfall_flow/waterfall_flow.dart';
 
 class LampPage extends StatefulWidget {
+  const LampPage({super.key});
+
 
   @override
   State<LampPage> createState() => _LampPageState();
@@ -16,12 +18,12 @@ class _LampPageState extends State<LampPage> {
   final Map<String, dynamic>? args = Get.arguments;
   String? title;
   Color _lampColor = Colors.white;
-  double _colorOpacity = 1.0;
-  double _iconPositionY = 0.0;
-  double _iconPositionMax = 300.0;
+  final double _colorOpacity = 1.0;
+  final double _iconPositionY = 0.0;
+  final double _iconPositionMax = 300.0;
   int _colorIndex = 0;
 
-  List<Color> _colors = [
+  final List<Color> _colors = [
     Colors.red,
     Colors.yellow,
     Colors.green,
@@ -46,7 +48,7 @@ class _LampPageState extends State<LampPage> {
       appBar: AppBar(
         leading: IconButton(onPressed: (){
           Get.back(result: {"color":_lampColor});
-        }, icon: Icon(Icons.arrow_back)),
+        }, icon: const Icon(Icons.arrow_back)),
 
       ),
       body: SafeArea(
@@ -55,16 +57,16 @@ class _LampPageState extends State<LampPage> {
           Row(
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 10.0, right: 10),
+                padding: const EdgeInsets.only(left: 10.0, right: 10),
                 child: 
-                  Text(title ?? "", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                  Text(title ?? "", style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
               ),
             ],
           ),
-          Row(
+          const Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 10.0, bottom: 10, right: 10),
+                padding: EdgeInsets.only(left: 10.0, bottom: 10, right: 10),
                 child: Text("by ggggg"),
               ),
             ],
@@ -97,7 +99,7 @@ class _LampPageState extends State<LampPage> {
                   ],
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Column(
                 children: 
                 _colors.asMap().entries.map((e) {
@@ -115,7 +117,7 @@ class _LampPageState extends State<LampPage> {
                 }).toList(),
                 
               ),
-              Spacer(),
+              const Spacer(),
               // Stack(children: [
               //   Container(
               //     child: Padding(

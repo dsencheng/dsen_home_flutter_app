@@ -84,7 +84,7 @@ class _ChatPageState extends State<ChatPage> {
                 right: isMe ? 10 : 40,
                 top: 10,
                 bottom: 10),
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
                 color: isMe ? Colors.grey[200] : Colors.blue[200],
                 borderRadius: BorderRadius.circular(10)),
