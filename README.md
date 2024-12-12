@@ -1,6 +1,4 @@
-# dsen_home_flutter_app
-
-A new Flutter module project.
+#### 目前仅支持iOS，Android未适配。
 
 - 仿抖音首页
 - 仿AI聊天
