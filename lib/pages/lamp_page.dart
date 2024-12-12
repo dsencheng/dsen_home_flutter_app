@@ -1,10 +1,6 @@
-import 'dart:math';
 
-import 'package:DsenHome/childWidget/waterfakk_flow.dart';
-import 'package:DsenHome/utils/random_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waterfall_flow/waterfall_flow.dart';
 
 class LampPage extends StatefulWidget {
   const LampPage({super.key});

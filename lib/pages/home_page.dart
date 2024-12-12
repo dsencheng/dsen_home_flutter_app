@@ -1,8 +1,6 @@
-import 'package:DsenHome/pages/lamp_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../childWidget/movie_card.dart';
 import '../childWidget/music_card.dart';
 import '../extension/theme_extension.dart';
 import '../childWidget/device_card.dart';
@@ -146,10 +144,10 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(
                     fontSize: 14, color: Theme.of(context).largeTitleColor),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
-              Icon(Icons.arrow_drop_down),
+              const Icon(Icons.arrow_drop_down),
             ],
           ),
         ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../utils/random_utils.dart';
 
 class PersonalPageHeader extends StatefulWidget {
   PersonalPageHeader(

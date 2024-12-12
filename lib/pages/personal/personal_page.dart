@@ -1,12 +1,8 @@
 import 'package:DsenHome/pages/personal/personal_page_header.dart';
-import 'package:DsenHome/utils/random_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../delegate/sliver_simple_header_delegate.dart';
 import '../../delegate/sliver_tabbar_delegate.dart';
-import 'personal_header_tabbar.dart';
-import 'tab_indicator_widget.dart';
 
 class PersonalPage extends StatefulWidget {
   const PersonalPage({super.key});
