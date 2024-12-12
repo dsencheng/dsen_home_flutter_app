@@ -30,18 +30,35 @@ class _MusicCardState extends State<MusicCard> {
   String _name = "未知";
   String _artist = "未知";
 
-  final _audioPlayer = AudioPlayer();
+  AudioPlayer? _audioPlayer;
 
   @override
   void initState() {
     super.initState();
+    print(#initState);
     loadAudio();
   }
 
   @override
+  void deactivate() {
+    print(#deactivate);
+    audioPlayerDispose();
+    super.deactivate();
+  }
+
+  @override
   void dispose() {
-    _audioPlayer.dispose();
+    print(#dispose);
+    audioPlayerDispose();
     super.dispose();
+  }
+
+  void audioPlayerDispose() async {
+    // if (_audioPlayer?.playing == true) {
+    //   print("播放中");
+    //   await _audioPlayer?.stop();
+    // }
+    _audioPlayer?.dispose();
   }
 
   @override
@@ -253,98 +270,111 @@ class _MusicCardState extends State<MusicCard> {
   }
 
   void loadAudio() async {
-    // Define the playlist
-    final playlist = ConcatenatingAudioSource(
-      // Start loading next item just before reaching it
-      useLazyPreparation: true,
-      // Customise the shuffle algorithm
-      shuffleOrder: DefaultShuffleOrder(),
-      // Specify the playlist items
-      children:
-          audio_play_list.map((e) => AudioSource.uri(Uri.parse(e.audioUrl))).toList(),
-    );
+    try {
+      _audioPlayer = AudioPlayer();
 
-    await _audioPlayer.setAudioSource(playlist,
-        initialIndex: 0, initialPosition: Duration.zero);
-    await _audioPlayer.setShuffleModeEnabled(true);
-    await _audioPlayer.setLoopMode(LoopMode.all);
+      final playlist = ConcatenatingAudioSource(
+        useLazyPreparation: true,
+        shuffleOrder: DefaultShuffleOrder(),
+        children: audio_play_list
+            .map((e) => AudioSource.uri(Uri.parse(e.audioUrl)))
+            .toList(),
+      );
 
-    _audioPlayer.playerStateStream.listen((playerState) {
-      if (playerState.processingState == ProcessingState.idle) {
-        print("Player is idle");
-      } else if (playerState.processingState == ProcessingState.loading) {
-        print("Player is loading");
-      } else if (playerState.processingState == ProcessingState.buffering) {
-        print("Player is buffering");
-      } else if (playerState.processingState == ProcessingState.ready) {
-        print("Player is ready");
-      } else if (playerState.processingState == ProcessingState.completed) {
-        print("Player has completed");
-      }
-    });
+      await _audioPlayer?.setAudioSource(playlist,
+          initialIndex: 0, initialPosition: Duration.zero);
+      await _audioPlayer?.setShuffleModeEnabled(true);
+      await _audioPlayer?.setLoopMode(LoopMode.all);
 
-    _audioPlayer.durationStream.listen((duration) {
-      print("获取时间");
-      if (duration != null) {
-        setState(() {
-          _totalTime = _formatDuration(duration);
-        });
-      }
-    });
-
-    _audioPlayer.positionStream.listen((position) {
-      setState(() {
-        _time = _formatDuration(position);
+      _audioPlayer?.playerStateStream.listen((playerState) {
+        if (playerState.processingState == ProcessingState.idle) {
+          print("Player is idle");
+        } else if (playerState.processingState == ProcessingState.loading) {
+          print("Player is loading");
+        } else if (playerState.processingState == ProcessingState.buffering) {
+          print("Player is buffering");
+        } else if (playerState.processingState == ProcessingState.ready) {
+          print("Player is ready");
+        } else if (playerState.processingState == ProcessingState.completed) {
+          print("Player has completed");
+        }
       });
-    });
 
-    _audioPlayer.currentIndexStream.listen((index) {
-      if (index != null) {
-        final item = audio_play_list[index!];
-        setState(() {
-          _name = item.title;
-          _artist = item.artist;
-        });
-      }
-    });
-    
+      _audioPlayer?.durationStream.listen((duration) {
+        print("获取时间");
+        if (mounted) {
+          if (duration != null) {
+            setState(() {
+              _totalTime = _formatDuration(duration);
+            });
+          }
+        }
+      });
+
+      _audioPlayer?.positionStream.listen((position) {
+        print("播放时间偏移");
+        if (mounted) {
+          setState(() {
+            _time = _formatDuration(position);
+          });
+        }
+      });
+
+      _audioPlayer?.currentIndexStream.listen((index) {
+        print("当前播放索引");
+        if (mounted) {
+          if (index != null) {
+            final item = audio_play_list[index];
+            setState(() {
+              _name = item.title;
+              _artist = item.artist;
+            });
+          }
+        }
+      });
+    } on Exception catch (e) {
+      print("初始化播放器错误 $e");
+    }
   }
 
   void _play(AudioAction state) async {
     switch (state) {
       case AudioAction.Play:
-        await _audioPlayer.play();
+        await _audioPlayer?.play();
       case AudioAction.Paused:
-        await _audioPlayer.pause();
+        await _audioPlayer?.pause();
       case AudioAction.Stopped:
-        await _audioPlayer.stop();
+        await _audioPlayer?.stop();
       case AudioAction.Buffering:
       case AudioAction.Error:
       case AudioAction.Next:
-        await _audioPlayer.seekToNext();
-        setState(() {          
-        _progress = 0.0;
+        await _audioPlayer?.seekToNext();
+        setState(() {
+          _progress = 0.0;
         });
       case AudioAction.Previous:
-        await _audioPlayer.seekToPrevious();
-        setState(() {          
-        _progress = 0.0;
+        await _audioPlayer?.seekToPrevious();
+        setState(() {
+          _progress = 0.0;
         });
     }
   }
 
   void _volumeChange() async {
-    await _audioPlayer.setVolume(_volume);
+    await _audioPlayer?.setVolume(_volume);
   }
 
   void _seekTo() async {
-    if (_audioPlayer.duration != null) {
-      final seekTime = Duration(milliseconds: (_audioPlayer.duration!.inMilliseconds * _progress).toInt());
-      await _audioPlayer.seek(seekTime);
+    if (_audioPlayer?.duration != null) {
+      final seekTime = Duration(
+          milliseconds:
+              (_audioPlayer!.duration!.inMilliseconds * _progress).toInt());
+      await _audioPlayer?.seek(seekTime);
     }
-    
   }
+
   String _formatDuration(Duration duration) {
-    return DateFormat('mm:ss').format(DateTime.fromMillisecondsSinceEpoch(duration.inMilliseconds));
+    return DateFormat('mm:ss')
+        .format(DateTime.fromMillisecondsSinceEpoch(duration.inMilliseconds));
   }
 }
