@@ -154,7 +154,7 @@ class _PersonalPageState extends State<PersonalPage> {
         crossAxisCount: 2, //Grid按两列显示
         mainAxisSpacing: 10.0,
         crossAxisSpacing: 10.0,
-        childAspectRatio: 4.0,
+        // childAspectRatio: 4.0,
       ),
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
@@ -168,15 +168,14 @@ class _PersonalPageState extends State<PersonalPage> {
 
   Widget _buildGridItemWidget(int index, BuildContext context, String name) {
     return Container(
-        height: 200,
+        // height: 200,
         alignment: Alignment.center,
         color: Colors.cyan[100 * (index % 9)],
         child: Stack(children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.5 - 30,
-            height: 200,
-            // child: Image.asset("images/music_cover.png")
-          ),
+              // width: MediaQuery.of(context).size.width * 0.5 - 30,
+              // height: 200,
+              child: Image.asset("images/sheep.png")),
           Positioned(
               bottom: 0,
               left: 0,
@@ -184,17 +183,20 @@ class _PersonalPageState extends State<PersonalPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("$name $index"),
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.heart_broken_rounded,
-                              color: Colors.red,
-                            ))
-                      ]),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("$name $index"),
+                          IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.heart_broken_rounded,
+                                color: Colors.red,
+                              ))
+                        ]),
+                  ),
                 ],
               ))
         ]));
