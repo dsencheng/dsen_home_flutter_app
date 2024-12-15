@@ -24,12 +24,12 @@ class _PersonalPageState extends State<PersonalPage> {
   @override
   void initState() {
     super.initState();
-    Map<String,dynamic> args = Get.arguments ?? {};
+    Map<String, dynamic> args = Get.arguments ?? {};
     if (args.containsKey("showNavigationBar")) {
       _showBack = args["showNavigationBar"];
     }
     _scrollController.addListener(() {
-      _headerOffset =  _headerHeight - _scrollController.offset;
+      _headerOffset = _headerHeight - _scrollController.offset;
       // print("_headerOffset：${_headerOffset}");
       // offset 上滑增加，下滑减少
       if (_headerOffset <= safeAreaTop) {
@@ -52,7 +52,9 @@ class _PersonalPageState extends State<PersonalPage> {
 
   Widget _body() {
     safeAreaTop = MediaQuery.of(context).padding.top;
-    var tabbar = TabBar(tabs: _tabs.map((String name) => Tab(text: name)).toList(),);
+    var tabbar = TabBar(
+      tabs: _tabs.map((String name) => Tab(text: name)).toList(),
+    );
     return SafeArea(
       top: false,
       child: NestedScrollView(
@@ -78,9 +80,10 @@ class _PersonalPageState extends State<PersonalPage> {
                 child: SizedBox(
                   height: _headerHeight,
                   child: PersonalPageHeader(
-                    maxExtent: _headerHeight, 
+                    maxExtent: _headerHeight,
                     offset: _headerOffset,
-                    back: _showBack,),
+                    back: _showBack,
+                  ),
                 ),
               ),
             ),
@@ -112,7 +115,7 @@ class _PersonalPageState extends State<PersonalPage> {
                   child: tabbar,
                   offset: _tabbarOffset,
                   minHeight: 48,
-                  maxHeight: 48+62,
+                  maxHeight: 48 + 62,
                 ),
                 pinned: true, // 使 TabBar 固定在顶部
               ),
@@ -156,14 +159,44 @@ class _PersonalPageState extends State<PersonalPage> {
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
           //创建子widget
-          return Container(
-            alignment: Alignment.center,
-            color: Colors.cyan[100 * (index % 9)],
-            child: Text('$name item $index'),
-          );
+          return _buildGridItemWidget(index, context, name);
         },
         childCount: count,
       ),
     );
+  }
+
+  Widget _buildGridItemWidget(int index, BuildContext context, String name) {
+    return Container(
+        height: 200,
+        alignment: Alignment.center,
+        color: Colors.cyan[100 * (index % 9)],
+        child: Stack(children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.5 - 30,
+            height: 200,
+            // child: Image.asset("images/music_cover.png")
+          ),
+          Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("$name $index"),
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.heart_broken_rounded,
+                              color: Colors.red,
+                            ))
+                      ]),
+                ],
+              ))
+        ]));
   }
 }

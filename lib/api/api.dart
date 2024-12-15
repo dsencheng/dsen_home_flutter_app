@@ -5,6 +5,8 @@ import 'dart:math';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
+// 测试token "Bearer 00261056-dcce-4d5b-9e2a-2f0a69c583ec"
+
 class Api {
   //单例
   static final Api _singleton = Api._internal();
@@ -14,11 +16,6 @@ class Api {
   Api._internal();
 
   final _dio = Dio();
-
-  final _headers = {
-    "Content-Type": "application/json",
-    "Authorization": "Bearer 00261056-dcce-4d5b-9e2a-2f0a69c583ec"
-  };
 
   final list = [
     "你听说最近 AI 又有新突破了吗？",
@@ -31,7 +28,7 @@ class Api {
   final _endFlag = "[DONE]";
   var random = 0;
 
-  Future<String> getData(String prompt) async {
+  Future<String> getData(String prompt, String token) async {
     // 模拟网络请求
     // await Future.delayed(Duration(seconds: 2));
     // random++;
@@ -54,14 +51,17 @@ class Api {
               {"role": "user", "content": prompt}
             ]
           },
-          options: Options(headers: _headers));
+          options: Options(headers: {
+            "Content-Type": "application/json",
+            "Authorization": token
+          }));
       return response.data['choices'][0]['message']['content'];
     } catch (e) {
       return '请求失败';
     }
   }
 
-  Stream<String> getDataStream(String prompt) async* {
+  Stream<String> getDataStream(String prompt, String token) async* {
     // for (int i = 0; i < 10; i++) {
     //   // 模拟网络请求延迟
     //   await Future.delayed(Duration(seconds: 1));
@@ -81,8 +81,10 @@ class Api {
               {"role": "user", "content": prompt}
             ]
           },
-          options:
-              Options(headers: _headers, responseType: ResponseType.stream));
+          options: Options(headers: {
+            "Content-Type": "application/json",
+            "Authorization": token
+          }, responseType: ResponseType.stream));
 
       final steam = response.data!.stream.transform(
           StreamTransformer<Uint8List, String>.fromHandlers(

@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 import 'package:typewritertext/typewritertext.dart';
 
 import '../../data/chat_data.dart';
-import '../../viewmodel/chat_view_model.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -22,6 +21,7 @@ class _ChatPageState extends State<ChatPage> {
   var _textEditingController = TextEditingController(text: "你是谁");
   var _scrollController = ScrollController();
   final _focusNode = FocusNode();
+  final _tokenController = TextEditingController();
 
   // ChatViewModel _viewModel = ChatViewModel();
 
@@ -166,7 +166,31 @@ class _ChatPageState extends State<ChatPage> {
                       )),
                       IconButton(
                           onPressed: () {
-                            _sendMessage();
+                            if (_chatController.API_Token.isEmpty) {
+                              Get.dialog(AlertDialog(
+                                title: const Text("请输入你的Token"),
+                                content: TextField(
+                                  controller: _tokenController,
+                                ),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () {
+                                        Get.back();
+                                      },
+                                      child: const Text("关闭")),
+                                  TextButton(
+                                      onPressed: () {
+                                        _chatController.API_Token =
+                                            _tokenController.text;
+                                        _chatController.saveToken();
+                                        Get.back();
+                                      },
+                                      child: const Text("保存")),
+                                ],
+                              ));
+                            } else {
+                              _sendMessage();
+                            }
                           },
                           icon: const Icon(Icons.send)),
                     ],

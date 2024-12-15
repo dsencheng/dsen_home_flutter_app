@@ -1,9 +1,10 @@
 #### 目前仅支持iOS，Android未适配。
 
-- 仿抖音首页
-- 仿AI聊天，支持流式/非流失接口
-- 支持播放音乐、直播
-- 个人主页悬浮吸顶tabbar，继承SliverPersistentHeaderDelegate，重写布局，实现上滑增高，下滑恢复。
+- 仿短剧、抖音页面
+- 仿AI聊天，支持流式/非流失接口，使用豆包API
+- 支持播放音乐、直播(待开发)
+- 仿商城页面(待开发)
+- 个人主页，悬浮吸顶tabbar，继承SliverPersistentHeaderDelegate，重写布局，实现上滑增高，下滑恢复。
 
 
 iOS运行前，在`info.plist`添加权限。

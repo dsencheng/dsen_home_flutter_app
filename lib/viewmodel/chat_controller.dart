@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:DsenHome/api/api.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/chat_data.dart';
-import 'chat_view_model.dart';
 
 class ChatController extends GetxController {
   final chatList = <ChatData>[].obs;
@@ -17,6 +17,7 @@ class ChatController extends GetxController {
 
   StreamController<String>? streamController;
   String _streamMessage = '';
+  String API_Token = '';
 
   get chatCount {
     var count = chatList.length;
@@ -40,7 +41,7 @@ class ChatController extends GetxController {
       }
       streamController = StreamController.broadcast();
       isTyping = true;
-      Api().getDataStream(message).listen((value) {
+      Api().getDataStream(message, API_Token).listen((value) {
         // print("value: $value");
         isTyping = true;
         _streamMessage += value;
@@ -64,11 +65,23 @@ class ChatController extends GetxController {
         print("stream error: $error");
       });
     } else {
-      Api().getData(message).then((value) {
+      Api().getData(message, API_Token).then((value) {
         chatList.add(ChatData(message: value, isMe: false));
         isLoading.toggle();
         scrollToBottom.trigger(true);
       });
+    }
+  }
+
+  void readToken() async {
+    final pref = SharedPreferencesAsync();
+    API_Token = await pref.getString("doubao_token") ?? '';
+  }
+
+  void saveToken() async {
+    if (API_Token.isNotEmpty) {
+    final pref = SharedPreferencesAsync();
+    pref.setString("doubao_token", API_Token);
     }
   }
 }
