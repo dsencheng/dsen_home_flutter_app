@@ -1,7 +1,7 @@
 #### 目前仅支持iOS，Android未适配。
 
 - 仿抖音首页
-- 仿AI聊天
+- 仿AI聊天，支持流式/非流失接口
 - 支持播放音乐、直播
 - 个人主页悬浮吸顶tabbar，继承SliverPersistentHeaderDelegate，重写布局，实现上滑增高，下滑恢复。
 
