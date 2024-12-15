@@ -78,6 +78,7 @@ flutter:
     - images/floor_lamp.png
     - images/avatar.png
     - images/sheep.png
+    - images/movies_cover.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

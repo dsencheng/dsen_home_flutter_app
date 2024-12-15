@@ -3,8 +3,6 @@ import 'package:DsenHome/pages/shorts/short_video_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'playlet_page.dart';
-
 class ShortVideoPage extends StatefulWidget {
   const ShortVideoPage({super.key});
 
@@ -21,13 +19,22 @@ class _ShortVideoPageState extends State<ShortVideoPage> {
     _pageController = PageController(initialPage: 0);
     _pageController.addListener(_onScroll);
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: (){
-        Get.to(const PlayletPage());
-      }, child: const Text("找剧"),),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.white,
+        onPressed: () {
+          Get.toNamed("/playlet");
+        },
+        child: Icon(
+          Icons.search,
+          color: Colors.white,
+          size: 30,
+        ),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       body: Container(
           color: Colors.black,
@@ -37,7 +44,9 @@ class _ShortVideoPageState extends State<ShortVideoPage> {
               itemCount: videoList.length,
               // itemExtent: MediaQuery.of(context).size.height - MediaQuery.of(context).padding.bottom,
               itemBuilder: (BuildContext context, int index) {
-                return ShortVideoScreen(url: videoList[index],);
+                return ShortVideoScreen(
+                  url: videoList[index],
+                );
               })),
     );
   }
@@ -48,7 +57,5 @@ class _ShortVideoPageState extends State<ShortVideoPage> {
     super.dispose();
   }
 
-  void _onScroll() {
-
-  }
+  void _onScroll() {}
 }
