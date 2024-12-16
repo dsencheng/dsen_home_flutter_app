@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         _lampColor = Color(color);
       });
-      }
+    }
   }
 
   @override
@@ -59,12 +59,12 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 10),
-                    child: _room()),
-                  const SizedBox(
-                    height: 20,
-                  ),
+                  // Container(
+                  //   margin: const EdgeInsets.symmetric(horizontal: 10),
+                  //   child: _room()),
+                  // const SizedBox(
+                  //   height: 20,
+                  // ),
                   _devices(),
                   const SizedBox(
                     height: 20,
@@ -75,9 +75,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Container(
                     height: 200,
-                    color: Colors.indigo,
+                    color: Colors.indigo[100],
                     alignment: Alignment.center,
-                    child: const Text("直播"),
+                    child: const Text("直播待开发"),
                   ),
                   const SizedBox(
                     height: 20,
@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                   color: Theme.of(context).color4c),
             ),
             Text(
-              "业主",
+              "Dsen",
               style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -158,78 +158,78 @@ class _HomePageState extends State<HomePage> {
 
   Widget _devices() {
     return Container(
-        height: 120,
-        margin: const EdgeInsets.symmetric(horizontal: 10),
-        child: ListView(
-              clipBehavior: Clip.none,
-              scrollDirection: Axis.horizontal,
-              children: [
-                AspectRatio(
-                  aspectRatio: 1,
-                  child: DeviceCard(
-                    title: "灯光设备一",
-                    iconName: "",
-                    isActive: true,
-                    foregroundColor: _lampColor,
-                    tapCardEvent: () async {
-                      final result = await Get.toNamed("/lamp", arguments: {"title": "灯光设备一","color": _lampColor});
-                      if (result != null && result is Map) {
-                        setState(() {
-                          _lampColor = result["color"];
-                        });
-                        prefs.setInt("lampColor", _lampColor.value);
-                      }
-                    },
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                AspectRatio(
-                  aspectRatio: 1,
-                  child: DeviceCard(
-                    title: "窗帘设备二",
-                    iconName: "",
-                    isActive: false,
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                AspectRatio(
-                  aspectRatio: 1,
-                  child: DeviceCard(
-                    title: "清洁设备三",
-                    iconName: "",
-                    isActive: true,
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                AspectRatio(
-                  aspectRatio: 1,
-                  child: DeviceCard(
-                    title: "其他设备四",
-                    iconName: "",
-                    isActive: false,
-                  ),
-                ),
-              ],
+      height: 120,
+      margin: const EdgeInsets.symmetric(horizontal: 10),
+      child: ListView(
+        clipBehavior: Clip.none,
+        scrollDirection: Axis.horizontal,
+        children: [
+          AspectRatio(
+            aspectRatio: 1,
+            child: DeviceCard(
+              title: "灯光设备一",
+              iconName: "",
+              isActive: true,
+              foregroundColor: _lampColor,
+              tapCardEvent: () async {
+                final result = await Get.toNamed("/lamp",
+                    arguments: {"title": "灯光设备一", "color": _lampColor});
+                if (result != null && result is Map) {
+                  setState(() {
+                    _lampColor = result["color"];
+                  });
+                  prefs.setInt("lampColor", _lampColor.value);
+                }
+              },
             ),
-        );
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          AspectRatio(
+            aspectRatio: 1,
+            child: DeviceCard(
+              title: "窗帘设备二",
+              iconName: "",
+              isActive: false,
+            ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          AspectRatio(
+            aspectRatio: 1,
+            child: DeviceCard(
+              title: "清洁设备三",
+              iconName: "",
+              isActive: true,
+            ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          AspectRatio(
+            aspectRatio: 1,
+            child: DeviceCard(
+              title: "其他设备四",
+              iconName: "",
+              isActive: false,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _music() {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10),
-      child: const MusicCard());
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        child: const MusicCard());
   }
 
   Widget _movies() {
     return Container(
       height: 300,
-      
     );
   }
 }

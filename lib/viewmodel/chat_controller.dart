@@ -19,6 +19,10 @@ class ChatController extends GetxController {
   String _streamMessage = '';
   String API_Token = '';
 
+  ChatController() {
+    readToken();
+  }
+
   get chatCount {
     var count = chatList.length;
     if (isStreaming) {
@@ -80,8 +84,8 @@ class ChatController extends GetxController {
 
   void saveToken() async {
     if (API_Token.isNotEmpty) {
-    final pref = SharedPreferencesAsync();
-    pref.setString("doubao_token", API_Token);
+      final pref = SharedPreferencesAsync();
+      pref.setString("doubao_token", API_Token);
     }
   }
 }
