@@ -9,13 +9,19 @@
 
 页面截图
 
-![首页](snapshot/Simulator%20Screenshot%20-%20iPhone%2016%20Pro%20-%202024-12-16%20at%2010.07.41.png)
-![短视频](snapshot/Simulator%20Screenshot%20-%20iPhone%2016%20Pro%20-%202024-12-16%20at%2010.07.54.png)
-![AI聊天](snapshot/Simulator%20Screenshot%20-%20iPhone%2016%20Pro%20-%202024-12-16%20at%2010.09.20.png)
-![AI聊天评论](snapshot/Simulator%20Screenshot%20-%20iPhone%2016%20Pro%20-%202024-12-16%20at%2010.07.59.png)
-![个人主页](snapshot/Simulator%20Screenshot%20-%20iPhone%2016%20Pro%20-%202024-12-16%20at%2010.09.20.png)
-![视频列表](snapshot/Simulator%20Screenshot%20-%20iPhone%2016%20Pro%20-%202024-12-16%20at%2010.08.12.png)
-![设备控制](snapshot/Simulator%20Screenshot%20-%20iPhone%2016%20Pro%20-%202024-12-16%20at%2010.13.57.png)
+<p align="center">
+  <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.07.41.png" alt="首页" width="200"/>
+  <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.07.54.png" alt="短视频" width="200"/>
+  <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.09.20.png" alt="AI聊天" width="200"/>
+</p>
+<p align="center">
+  <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.07.59.png" alt="AI聊天评论" width="200"/>
+  <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.09.38.png" alt="个人主页" width="200"/>
+  <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.13.57.png" alt="设备控制" width="200"/>
+</p>
+<p align="center">
+  <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.08.12.png" alt="视频列表" width="200"/>
+</p>
 
 #### 音乐播放
 
