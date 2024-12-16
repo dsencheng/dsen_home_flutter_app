@@ -13,8 +13,8 @@
 <p align="left">
   <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 15.58.14.png" alt="首页" width="200"/>
   <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.13.57.png" alt="设备控制" width="200"/>
-  <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.07.54.png" alt="短视频" width="200"/>
-  <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 15.58.19.png" alt="视频列表" width="200"/>
+  <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 15.58.19.png" alt="短视频" width="200"/>
+  <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.08.12.png" alt="视频列表" width="200"/>
 </p>
 <p align="left">
   <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 16.00.01.png" alt="AI聊天" width="200"/>
