@@ -262,7 +262,7 @@ class _ChatPageState extends State<ChatPage> {
       margin: EdgeInsets.only(left: 10, right: 40, top: 10, bottom: 10),
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-          color: Colors.blue, borderRadius: BorderRadius.circular(10)),
+          color: Colors.blue[100], borderRadius: BorderRadius.circular(10)),
       child: TypeWriter(
         controller: _typeWriterController,
         builder: (BuildContext context, TypeWriterValue value) {

@@ -77,6 +77,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
         ),
         bottomNavigationBar: _showTabBar
             ? SafeArea(
+                bottom: false,
                 child: Builder(builder: (context) {
                   return GestureDetector(
                     onHorizontalDragStart: (details) {
