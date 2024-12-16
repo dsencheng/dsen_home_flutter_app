@@ -9,19 +9,18 @@
 
 页面截图
 
-<p align="center">
+<p align="left">
   <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.07.41.png" alt="首页" width="200"/>
   <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.07.54.png" alt="短视频" width="200"/>
+  <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.08.12.png" alt="视频列表" width="200"/>
   <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.09.20.png" alt="AI聊天" width="200"/>
 </p>
-<p align="center">
+<p align="left">
   <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.07.59.png" alt="AI聊天评论" width="200"/>
   <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.09.38.png" alt="个人主页" width="200"/>
   <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.13.57.png" alt="设备控制" width="200"/>
 </p>
-<p align="center">
-  <img src="./snapshot/Simulator Screenshot - iPhone 16 Pro - 2024-12-16 at 10.08.12.png" alt="视频列表" width="200"/>
-</p>
+
 
 #### 音乐播放
 
